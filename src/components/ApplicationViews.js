@@ -18,9 +18,13 @@ export const ApplicationViews = (props) => {
                 </Route>
             </LocationProvider>
             <AnimalProvider>
-                <Route path="/animals">
-                    <AnimalList />
-                </Route>
+                <LocationProvider>
+                    <CustomerProvider>
+                        <Route exact path="/animals">
+                            <AnimalList />
+                        </Route>
+                    </CustomerProvider>
+                </LocationProvider>
             </AnimalProvider>
             <CustomerProvider>
                 <Route path="/customers">
