@@ -39,8 +39,15 @@ export const EmployeeForm = (props) => {
         const animalId = parseInt(animal.current.value)
 
         if (locationId === 0) {
-            window.alert("Please select a location")
-        } else {
+			window.alert("Please select a location");
+		} 
+		else if (animalId === 0) {
+			window.alert("Please select an animal");
+        }
+        else if (name.current.value === "") {
+            window.alert("Please enter a name");
+        }
+		else {
             addEmployee({
                 name: name.current.value,
                 locationId,
