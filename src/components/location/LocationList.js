@@ -13,24 +13,15 @@ export const LocationList = () => {
         then gets the data, then re-renders.
     */
     useEffect(() => {
-        console.log("LocationList: Initial render before data")
         getLocations()
     }, [])
 
-    /*
-        This effect is solely for learning purposes. The effect
-        it is responding to is that the location state changed.
-    */
-    useEffect(() => {
-        console.log("LocationList: Location state changed")
-        console.log(locations)
-    }, [locations])
-
     return (
         <div className="locations">
-        {
-            locations.map(loc => <Location key={loc.id} location={loc} />)
-        }
+            <h1>Locations</h1>
+            <article className="locationList">
+        {locations.map(loc => <Location key={loc.id} location={loc} />)}
+        </article>
         </div>
     )
 }

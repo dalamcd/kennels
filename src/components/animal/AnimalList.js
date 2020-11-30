@@ -11,21 +11,29 @@ export const AnimalList = () => {
     const { customers, getCustomers } = useContext(CustomerContext);
 
     useEffect(() => {
-        getAnimals();
         getLocations();
-        getCustomers();
     }, [])
+
+    useEffect(() => {
+        getCustomers();
+    }, [locations])
+
+    useEffect(() => {
+        getAnimals();
+    }, [customers])
 
     return (
         <div className="animals">
+            <h1>Animals</h1>
+            <article className="animalList">
         {
             animals.map(ami => {
                 const cust = customers.find(c => c.id === ami.customerId);
                 const loc = locations.find(l => l.id === ami.locationId);
-                console.log(cust, loc);
                 return <Animal key={ami.id} location={loc} customer={cust} animal={ami} />
             })
         }
+            </article>
         </div>
     )
 }

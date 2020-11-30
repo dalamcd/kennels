@@ -12,9 +12,10 @@ export const CustomerList = () => {
 
     return (
         <div className="customers">
-        {
-            customers.map(cust => <Customer key={cust.id} customer={cust} />)
-        }
+            <h1>Customers</h1>
+            <article className="customerList">
+        {customers.map(cust => <Customer key={cust.id} customer={cust} />)}
+            </article>
         </div>
     )
 }
