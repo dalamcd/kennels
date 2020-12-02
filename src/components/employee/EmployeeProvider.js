@@ -29,6 +29,13 @@ export const EmployeeProvider = (props) => {
             .then(getEmployees)
     }
 
+    const removeEmployee = empId => {
+        return fetch(`http://localhost:8088/employees/${empId}`, {
+            method: "DELETE"
+        })
+        .then(getEmployees);
+    }
+
     /*
         You return a context provider which has the
         `locations` state, the `addLocation` function,
@@ -37,7 +44,7 @@ export const EmployeeProvider = (props) => {
     */
     return (
         <EmployeeContext.Provider value={{
-            employees, addEmployee, getEmployees
+            employees, addEmployee, getEmployees, removeEmployee
         }}>
             {props.children}
         </EmployeeContext.Provider>

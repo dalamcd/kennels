@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import "./Employee.css"
 
 export const EmployeeList = (props) => {
-    const { employees, getEmployees } = useContext(EmployeeContext)
+    const { employees, getEmployees, removeEmployee } = useContext(EmployeeContext)
 
     useEffect(() => {
         getEmployees()
@@ -25,6 +25,8 @@ export const EmployeeList = (props) => {
                         <Link key={employee.id} to={`/employees/${employee.id}`}>
                             <h3>{employee.name}</h3>
                         </Link>
+                            <button onClick={() => removeEmployee(employee.id)}>
+                                Remove Employee</button>
                         </section>
                     })
                 }
