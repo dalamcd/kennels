@@ -10,7 +10,7 @@ export const AnimalList = (props) => {
     const { locations, getLocations } = useContext(LocationContext);
     const { customers, getCustomers } = useContext(CustomerContext);
 
-    const [ filteredAnimals, setFiltered ] = useState([])
+    const [filteredAnimals, setFiltered] = useState([])
 
     useEffect(() => {
         getLocations();
@@ -27,7 +27,7 @@ export const AnimalList = (props) => {
     useEffect(() => {
         if (searchTerms !== "") {
             // If the search field is not blank, display matching animals
-            const subset = animals.filter(animal => animal.name.toLowerCase().includes(searchTerms))
+            const subset = animals.filter(animal => animal.name.toLowerCase().includes(searchTerms.toLowerCase()))
             setFiltered(subset)
         } else {
             // If the search field is blank, display all animals
@@ -38,11 +38,10 @@ export const AnimalList = (props) => {
     return (
         <>
             <h1>Animals</h1>
-
             <button onClick={() => props.history.push("/animals/create")}>
                 Make Reservation
             </button>
-            <div className="animals">
+            <div className="animalList">
                 {
                     filteredAnimals.map(animal => {
                         return <Animal key={animal.id} animal={animal} />
